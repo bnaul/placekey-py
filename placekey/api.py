@@ -140,6 +140,7 @@ class PlacekeyAPI:
             payload['options'] = {'fields': fields}
 
         result = self.make_request(payload)
+        result.raise_for_status()
 
         return json.loads(result.text)
 
@@ -259,6 +260,7 @@ class PlacekeyAPI:
             batch_payload['options'] = {"fields": fields}
 
         result = self.make_bulk_request(batch_payload)
+        result.raise_for_status()
 
         return json.loads(result.text)
 
